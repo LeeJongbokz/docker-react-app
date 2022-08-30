@@ -3,14 +3,11 @@ sudo: required
 language: generic
 
 services:
-- docker
+  - docker
 
 before_install:
-- echo "start creating an image with dockerfile"
-- docker build -t s2feeling/docker-react-app -f Dockerfile.dev .
+  - echo "start creating an image with dockerfile"
+  - docker build -t s2feeling/docker-react-app -f Dockerfile.dev .
 
-script:
-- docker run -e CI=true s2feeling/docker-react-app npm run test -- -- coverage
-
-after_success:
-- echo "Test success"
+script: 
+  - docker run -e CI=true s2feeling/docker-react-app npm run test -- --coverage
